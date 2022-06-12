@@ -3,7 +3,7 @@ import Worker from "./string-reverse.worker";
 /**
  * Reverse a string in a dedicated worker using WASM
  * @param input string to reverse
- * @returns input string reversed 
+ * @returns input string reversed
  * @example
  *  // return 'olleH'
  *  await stringReverse('Hello')
@@ -18,10 +18,10 @@ export async function stringReverse(input: string): Promise<string> {
       worker.onmessage = (e: MessageEvent<string>) => {
         r(e.data);
         worker.terminate();
-      }
+      };
     };
-    worker.onmessageerror = (e:any)=>{
-      console.log('ERROR', e)
-    }
+    worker.onmessageerror = (e: any) => {
+      console.log("ERROR", e);
+    };
   });
 }

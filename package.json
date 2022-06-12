@@ -15,7 +15,10 @@
   },
   "author": "Remi Deltombe",
   "license": "MIT",
-  "bugs": {
+  "bugs": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/remi-deltombe/remi-string-reverse"
   },
   "keywords": [
     "library"

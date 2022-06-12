@@ -1,6 +1,1 @@
-import "./index.css";
-declare class MyLibrary {
-    constructor();
-    myMethod: () => boolean;
-}
-export default MyLibrary;
+export declare function stringReverse(input: string): Promise<string>;

@@ -11,23 +11,23 @@ type Promisify<F extends Promisifiable> = (
 export function createWorker<F extends Promisifiable>(fn: F): Promisify<F> {
 
   if (Worker) {
-    const source = `
+    return (...args: Parameters<F>) => {
+      const source = `
         const fn = ${fn.toString()};
         onmessage = (e)=> postMessage(fn(...e.data))
     `;
 
-    let resolver: (result: ReturnType<F>) => void;
-    const worker = new Worker(
-      "data:application/javascript," + encodeURIComponent(source)
-    );
+      let resolver: (result: ReturnType<F>) => void;
+      const worker = new Worker(
+        "data:application/javascript," + encodeURIComponent(source)
+      );
 
-    worker.onmessage = (e: MessageEvent<ReturnType<F>>) => {
-      if (resolver) {
-        resolver(e.data as any);
-        worker.terminate();
-      }
-    };
-    return (...args: Parameters<F>) => {
+      worker.onmessage = (e: MessageEvent<ReturnType<F>>) => {
+        if (resolver) {
+          resolver(e.data as any);
+          worker.terminate();
+        }
+      };
       worker.postMessage(args);
       return new Promise((r) => (resolver = r));
     };

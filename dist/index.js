@@ -19,18 +19,18 @@ __webpack_require__.r(__webpack_exports__);
  */
 function createWorker(fn) {
   if (Worker) {
-    var source = "\n        const fn = ".concat(fn.toString(), ";\n        onmessage = (e)=> postMessage(fn(...e.data))\n    ");
-    var resolver;
-    var worker = new Worker("data:application/javascript," + encodeURIComponent(source));
-
-    worker.onmessage = function (e) {
-      if (resolver) {
-        resolver(e.data);
-        worker.terminate();
-      }
-    };
-
     return function () {
+      var source = "\n        const fn = ".concat(fn.toString(), ";\n        onmessage = (e)=> postMessage(fn(...e.data))\n    ");
+      var resolver;
+      var worker = new Worker("data:application/javascript," + encodeURIComponent(source));
+
+      worker.onmessage = function (e) {
+        if (resolver) {
+          resolver(e.data);
+          worker.terminate();
+        }
+      };
+
       for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
         args[_key] = arguments[_key];
       }

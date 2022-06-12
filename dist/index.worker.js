@@ -13,6 +13,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wasm_string_reverse_wasm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../wasm/string-reverse.wasm */ "./src/wasm/string-reverse.wasm");
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_wasm_string_reverse_wasm__WEBPACK_IMPORTED_MODULE_0__]);
 _wasm_string_reverse_wasm__WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
+// @ts-ignore
 
 /**
  * Web worker used to call wasm with input to reverse

@@ -1,8 +1,11 @@
-import { createWorker } from "./create-worker";
+import Worker from "./string-reverse.worker";
 
 export async function stringReverse(input: string): Promise<string> {
-  const worker = createWorker((input: string) => {
-    return input.split("").reverse().join("");
+  return new Promise((r) => {
+    const worker = Worker();
+    worker.onmessage = (e: MessageEvent<string>) => {
+      r(e.data);
+    };
+    worker.postMessage(input);
   });
-  return worker(input);
 }

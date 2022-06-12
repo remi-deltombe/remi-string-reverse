@@ -1,3 +1,4 @@
+// @ts-ignore
 import * as wasm from "../wasm/string-reverse.wasm";
 
 /**

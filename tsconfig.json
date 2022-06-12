@@ -13,5 +13,8 @@
       "moduleResolution": "node",
     },
     "include": ["src/lib"],
-    "exclude": ["src/lib/**/tests"],
+    "exclude": [
+      "src/lib/**/tests",
+      "src/wasm"
+    ],
 }

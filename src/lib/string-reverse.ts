@@ -1,3 +1,4 @@
+// @ts-ignore
 import Worker from "./string-reverse.worker";
 
 /**

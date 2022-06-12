@@ -1,8 +1,5 @@
-import MyLibrary from "../lib";
-const myLibraryInstance = new MyLibrary();
+import { stringReverse } from "../lib";
 
-document.querySelector("body").innerHTML = `<h1>Hello World!</h1>`;
-
-console.log("myLibraryInstance", myLibraryInstance);
-
-myLibraryInstance.myMethod(); 
+stringReverse('Hello world').then(r=>{
+    document.querySelector("body").innerHTML = `<h1>${r}</h1>`;
+})

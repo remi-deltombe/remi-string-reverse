@@ -1,1 +1,1 @@
-export declare function stringReverse(input: string): Promise<string>;
+export { stringReverse } from "./string-reverse";

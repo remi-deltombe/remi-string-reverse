@@ -55,12 +55,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.worker\.ts/,
-        use: [
-          { loader: "worker-loader" }
-        ]
-      },
-      {
         test: /\.(m|j|t)s$/,
         exclude: /(node_modules|bower_components)/,
         use: {

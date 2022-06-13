@@ -1,6 +1,3 @@
-// @ts-ignore
-import Worker from "./string-reverse.worker";
-
 /**
  * Reverse a string in a dedicated worker using WASM
  * @param input string to reverse
@@ -11,7 +8,9 @@ import Worker from "./string-reverse.worker";
  */
 export async function stringReverse(input: string): Promise<string> {
   return new Promise((r) => {
-    const worker = Worker();
+    const worker = new Worker(
+      new URL("./string-reverse.worker.ts", import.meta.url)
+    );
 
     worker.onmessage = () => {
       // worker is ready to be used

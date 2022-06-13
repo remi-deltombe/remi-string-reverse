@@ -1,15 +1,15 @@
-  <h2>Reverse string</h2>
-  <blockquote>Minimal Library that reverse string using WASM</blockquote>
+<h2>Reverse string</h2>
+<blockquote>Minimal Library that reverse string using WASM</blockquote>
  
 
-## Installing
+### Installing
 
 ```
 npm install --save remi-string-reverse
 ```
 
 
-## Usage
+### Usage
 ```
 import { stringReverse } from 'remi-string-reverse';
 
@@ -19,7 +19,7 @@ async function myAsynFunction() {
 
 ```
 
-## Modifying 
+### Utilities 
 
 ```
 # clone library

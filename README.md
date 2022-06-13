@@ -25,6 +25,7 @@ async function myAsynFunction() {
 # clone library
 git clone https://github.com/remi-deltombe/remi-string-reverse.git
 cd remi-string-reverse
+npm install
 
 # running demo
 npm run start

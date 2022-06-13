@@ -23,10 +23,7 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /worker\.js$/i,
-        use: 'raw-loader',
-      },
+      { test: /\.wasm$/, type: "asset/inline" },
       {
         test: /\.(m|j|t)s$/,
         exclude: /(node_modules|bower_components)/,

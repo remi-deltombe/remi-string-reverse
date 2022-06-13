@@ -54,6 +54,7 @@ module.exports = {
   },
   module: {
     rules: [
+      { test: /\.wasm$/, type: "asset/inline" },
       {
         test: /\.(m|j|t)s$/,
         exclude: /(node_modules|bower_components)/,

@@ -1,6 +1,5 @@
 // @ts-ignore
-import * as wasm from "../wasm/string-reverse.wasm";
-
+import wasm from "../wasm/string-reverse.wasm";
 /**
  * Reverse a string in a dedicated worker using WASM
  * @param input string to reverse
@@ -10,33 +9,24 @@ import * as wasm from "../wasm/string-reverse.wasm";
  *  await stringReverse('Hello')
  */
 export async function stringReverse(input: string): Promise<string> {
-  /*
-  return new Promise((r) => {
-    const worker = new Worker(
-      new URL("./string-reverse.worker.ts", import.meta.url)
-    );
-
-    worker.onmessage = () => {
-      // worker is ready to be used
-      worker.postMessage(input);
-      worker.onmessage = (e: MessageEvent<string>) => {
-        r(e.data);
-        worker.terminate();
-      };
-    };
-    worker.onmessageerror = (e: any) => {
-      console.log("ERROR", e);
-    };
-  });
-  */
-
   // prepare memory
-  const { memory } = wasm;
+  const source = wasm.split("data:application/wasm;base64,")[1];
+  const binary_string = atob(source);
+  const len = binary_string.length;
+  const buffer = new Uint8Array(len);
+  for (let i = 0; i < len; i++) {
+    buffer[i] = binary_string.charCodeAt(i);
+  }
+
+  const { instance } = await WebAssembly.instantiate(buffer, {});
+  const memory = instance.exports.memory as any;
+  const fn = instance.exports.stringReverse as CallableFunction;
+
+  console.log(memory);
   const array = new Uint8Array(memory.buffer, 0, input.length);
   for (let i = 0; i < input.length; ++i) {
     array[i] = input.charCodeAt(i);
   }
-  // call string reverse and notify result
-  wasm.stringReverse(input.length, array.byteOffset);
+  fn(input.length, array.byteOffset);
   return new TextDecoder("utf8").decode(array);
 }

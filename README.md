@@ -1,4 +1,3 @@
- <div align="center">
   <h2>Reverse string</h2>
   <blockquote>Minimal Library that reverse string using WASM</blockquote>
  

@@ -4,7 +4,6 @@ import * as wasm from "../wasm/string-reverse.wasm";
 /**
  * Web worker used to call wasm with input to reverse
  */
-
 self.onmessage = (e: MessageEvent<string>) => {
   // prepare memory
   const input = e.data;

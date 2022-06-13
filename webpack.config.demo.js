@@ -24,6 +24,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /worker\.js$/i,
+        use: 'raw-loader',
+      },
+      {
         test: /\.(m|j|t)s$/,
         exclude: /(node_modules|bower_components)/,
         use: {
